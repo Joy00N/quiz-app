@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import AuthorQuiz from './AuthorQuiz.js';
+import CounterComponent from './CounterComponent.jsx';
 import * as serviceWorker from './serviceWorker';
-import {shuffle, sample} from 'underscore';
+import {shuffle, sample} from 'lodash';
 
 const authors = [
     {
@@ -50,7 +51,7 @@ function getTurnData(authors) {
     const allBooks = authors.reduce(function (p, c, i) {
         return p.concat(c.books);
     }, []);
-    const fourRandomBooks = shuffle(allBooks).slice(0,4);
+    const fourRandomBooks = shuffle(allBooks).slice(0, 4);
     const answer = sample(fourRandomBooks);
 
     return {
@@ -73,7 +74,13 @@ function onAnswerSelected(answer) {
 }
 
 function render() {
-    ReactDOM.render(<AuthorQuiz {...state} onAnswerSelected={onAnswerSelected} />, document.getElementById('root'));
+    ReactDOM.render(
+        <div>
+            <AuthorQuiz {...state} onAnswerSelected={onAnswerSelected}/>
+            <CounterComponent/>
+        </div>
+        , document.getElementById('root'));
+
 }
 
 render();

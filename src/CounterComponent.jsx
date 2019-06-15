@@ -1,29 +1,31 @@
 import React from 'react';
 
-class CounterComponent extends React.Component{
-    constructor(props){
+export default class CounterComponent extends React.Component {
+    constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
 
         this.state = {
-            counter: 0;
-    };
+            counter: 0
+        };
     }
 
-    shouldComponentUpdate(){
+    shouldComponentUpdate() {
         return false;
     }
 
-    handleClick(){
+    handleClick() {
         this.setState({counter: this.state.counter + 1});
+        this.forceUpdate();
     }
 
-    render(){
+    render() {
         return (
             <div>
                 <button onClick={this.handleClick}>
                     Button
                 </button>
+                <p>{this.state.counter}</p>
             </div>
         );
     }
