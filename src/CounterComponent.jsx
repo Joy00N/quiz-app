@@ -3,7 +3,7 @@ import React from 'react';
 export default class CounterComponent extends React.Component {
     constructor(props) {
         super(props);
-        this.handleClick = this.handleClick.bind(this);
+        // this.handleClick = this.handleClick.bind(this);
 
         this.state = {
             counter: 0
@@ -14,18 +14,18 @@ export default class CounterComponent extends React.Component {
         return false;
     }
 
-    handleClick() {
-        this.setState({counter: this.state.counter + 1});
-        this.forceUpdate();
-    }
+    // handleClick() {
+    //     this.setState({counter: this.state.counter + 1});
+    //     this.forceUpdate();
+    // }
 
     render() {
         return (
             <div>
-                <button onClick={this.handleClick}>
+                <button onClick={this.props.callback}>
                     Button
                 </button>
-                <p>{this.state.counter}</p>
+
             </div>
         );
     }
