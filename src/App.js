@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import AuthorQuiz from './AuthorQuiz.js';
+import AuthorQuiz from './AuthorQuiz.jsx';
 import CounterComponent from './CounterComponent.jsx';
 import {shuffle, sample} from 'lodash';
 
@@ -54,6 +54,7 @@ class App extends React.Component {
             highlight: ''
         };
         this.handleClick = this.handleClick.bind(this);
+        this.onAnswerSelected = this.onAnswerSelected.bind(this);
     }
 
     getTurnData(authors) {
@@ -70,7 +71,6 @@ class App extends React.Component {
                     title === answer))
         }
     }
-
 
     handleClick() {
         this.setState({
