@@ -2,46 +2,46 @@ import React from 'react';
 import './App.css';
 import AuthorQuiz from './AuthorQuiz.jsx';
 import CounterComponent from './CounterComponent.jsx';
-import {shuffle, sample} from 'lodash';
+import {shuffle, sample, find} from 'lodash';
 
 const authors = [
     {
         name: 'Mark Twain',
-        imageUrl: 'images/authors/marktwain.jpg',
+        imageUrl: 'images/yoon/yoo1.jpg',
         imageSource: 'Wikimedia Commons',
-        books: ['The Adventures of Huckleberry Finn']
+        books: ['Ugly']
     },
     {
         name: 'Joseph Conrad',
-        imageUrl: 'images/authors/josephconrad.png',
+        imageUrl: 'images/yoon/yoo2.jpg',
         imageSource: 'Wikimedia Commons',
-        books: ['Heart of Darkness']
+        books: ['Ugly']
     },
     {
         name: 'J.K. Rowling',
-        imageUrl: 'images/authors/jkrowling.jpg',
+        imageUrl: 'images/yoon/yoo3.jpg',
         imageSource: 'Wikimedia Commons',
         imageAttribution: 'Daniel Ogren',
-        books: ['Harry Potter and the Sorcerers Stone']
+        books: ['Ugly']
     },
     {
         name: 'Stephen King',
-        imageUrl: 'images/authors/stephenking.jpg',
+        imageUrl: 'images/yoon/yoo4.jpg',
         imageSource: 'Wikimedia Commons',
         imageAttribution: 'Pinguino',
-        books: ['The Shining', 'IT']
+        books: ['Ugly']
     },
     {
         name: 'Charles Dickens',
-        imageUrl: 'images/authors/charlesdickens.jpg',
+        imageUrl: 'images/yoon/yoon1.jpg',
         imageSource: 'Wikimedia Commons',
-        books: ['David Copperfield', 'A Tale of Two Cities']
+        books: ['Pretty']
     },
     {
         name: 'William Shakespeare',
-        imageUrl: 'images/authors/williamshakespeare.jpg',
+        imageUrl: 'images/yoon/yoon2.jpg',
         imageSource: 'Wikimedia Commons',
-        books: ['Hamlet', 'Macbeth', 'Romeo and Juliet']
+        books: ['Pretty']
     }
 ];
 
@@ -58,14 +58,12 @@ class App extends React.Component {
     }
 
     getTurnData(authors) {
-        const allBooks = authors.reduce(function (p, c, i) {
-            return p.concat(c.books);
-        }, []);
-        const fourRandomBooks = shuffle(allBooks).slice(0, 4);
-        const answer = sample(fourRandomBooks);
+
+        const choice = ['Pretty', 'Ugly'];
+        const answer = sample(choice);
 
         return {
-            books: fourRandomBooks,
+            books: choice,
             author: authors.find((author) =>
                 author.books.some((title) =>
                     title === answer))

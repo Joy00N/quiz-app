@@ -10,7 +10,7 @@ function Hero() {
                 <h1>Ugly Detection Quiz</h1>
             </div>
             <div className="row">
-                <p>select the book written by the author</p>
+                <p>Let us know what you think!</p>
             </div>
         </div>
     );
@@ -77,14 +77,26 @@ function Footer() {
 }
 
 class AuthorQuiz extends React.Component {
-    // constructor(props) {
-    //     super(props);
-    // }
+    constructor(props) {
+        super(props);
+        this.state = {
+          value: ''
+        };
+
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(e){
+        this.setState({value: e.target.value});
+    }
+
+    input;
 
     render() {
         return (
             <div className="container-fluid">
                 <Hero/>
+                <input ref= {(c) => this.input = c} value={this.state.value} onChange={this.handleChange}/>
                 <Turn {...this.props.turnData} highlight={this.props.highlight}
                       onAnswerSelected={this.props.onAnswerSelected}/>
                 <Continue/>
